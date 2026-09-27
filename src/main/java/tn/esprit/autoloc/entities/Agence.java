@@ -1,3 +1,4 @@
+// tn.esprit.autoloc.entities.Agence
 package tn.esprit.autoloc.entities;
 
 import jakarta.persistence.*;
@@ -5,21 +6,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tn.esprit.autoloc.entities.Enums.Role;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-      public class Employe {
+public class Agence {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
-    Long idEmploye;
-    String nom;
-    String prenom;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idAgence;
 
-    @Enumerated (EnumType.STRING)
-    Role role;
+    private String nom;
+    private String ville;
+    private String adresse;
+    private String telephone;
 }
