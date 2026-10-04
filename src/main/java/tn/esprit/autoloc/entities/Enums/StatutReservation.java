@@ -1,4 +1,3 @@
-// tn.esprit.autoloc.entities.Enums.StatutReservation
 package tn.esprit.autoloc.entities.Enums;
 
 public enum StatutReservation {

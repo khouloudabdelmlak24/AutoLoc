@@ -1,4 +1,3 @@
-// tn.esprit.autoloc.entities.Reservation
 package tn.esprit.autoloc.entities;
 
 import jakarta.persistence.*;
@@ -25,4 +24,15 @@ public class Reservation {
 
     @Enumerated(EnumType.STRING)
     private StatutReservation statut;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vehicule_id")
+    private Vehicule vehicule;
+
+    @OneToOne(mappedBy = "reservation", fetch = FetchType.LAZY)
+    private Contrat contrat;
 }

@@ -1,4 +1,3 @@
-// tn.esprit.autoloc.entities.Paiement
 package tn.esprit.autoloc.entities;
 
 import jakarta.persistence.*;
@@ -28,4 +27,8 @@ public class Paiement {
 
     @Enumerated(EnumType.STRING)
     private ModePaiement modePaiement;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "contrat_id")
+    private Contrat contrat;
 }

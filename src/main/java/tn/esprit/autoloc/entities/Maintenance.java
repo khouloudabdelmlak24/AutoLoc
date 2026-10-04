@@ -1,4 +1,3 @@
-// tn.esprit.autoloc.entities.Maintenance
 package tn.esprit.autoloc.entities;
 
 import jakarta.persistence.*;
@@ -22,4 +21,8 @@ public class Maintenance {
     private LocalDate dateDebut;
     private LocalDate dateFin;
     private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "vehicule_id")
+    private Vehicule vehicule;
 }

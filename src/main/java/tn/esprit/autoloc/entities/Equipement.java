@@ -1,4 +1,3 @@
-// tn.esprit.autoloc.entities.Equipement
 package tn.esprit.autoloc.entities;
 
 import jakarta.persistence.*;
@@ -6,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,4 +20,7 @@ public class Equipement {
     private Long idEquipement;
 
     private String libelle;
+
+    @ManyToMany(mappedBy = "equipements", fetch = FetchType.LAZY)
+    private List<Vehicule> vehicules = new ArrayList<>();
 }
