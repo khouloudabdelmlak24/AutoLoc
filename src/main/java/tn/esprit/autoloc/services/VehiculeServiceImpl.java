@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.autoloc.entities.Vehicule;
 import tn.esprit.autoloc.repository.VehiculeRepository;
-
 import java.util.List;
 
 @Service
