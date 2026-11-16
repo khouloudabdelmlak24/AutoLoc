@@ -1,18 +1,17 @@
 package tn.esprit.autoloc.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Maintenance;
 import tn.esprit.autoloc.services.IMaintenanceService;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/maintenances")
+@AllArgsConstructor
 public class MaintenanceController {
 
-    @Autowired
-    private IMaintenanceService maintenanceService;
+    private  final IMaintenanceService maintenanceService;
 
     @PostMapping
     public Maintenance ajouter(@RequestBody Maintenance maintenance) {

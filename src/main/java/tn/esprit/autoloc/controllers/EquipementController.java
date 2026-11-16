@@ -1,18 +1,17 @@
 package tn.esprit.autoloc.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Equipement;
 import tn.esprit.autoloc.services.IEquipementService;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/equipements")
+@AllArgsConstructor
 public class EquipementController {
 
-    @Autowired
-    private IEquipementService equipementService;
+    private final  IEquipementService equipementService;
 
     @PostMapping
     public Equipement ajouter(@RequestBody Equipement equipement) {

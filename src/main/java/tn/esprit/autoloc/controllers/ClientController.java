@@ -1,18 +1,17 @@
 package tn.esprit.autoloc.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Client;
 import tn.esprit.autoloc.services.IClientService;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
+@AllArgsConstructor
 public class ClientController {
 
-    @Autowired
-    private IClientService clientService;
+    private  final IClientService clientService;
 
     @PostMapping
     public Client ajouter(@RequestBody Client client) {

@@ -1,18 +1,19 @@
 package tn.esprit.autoloc.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Contrat;
 import tn.esprit.autoloc.services.IContratService;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/contrats")
+@AllArgsConstructor
+@Tag(name="gestion des contrats")
 public class ContratController {
 
-    @Autowired
-    private IContratService contratService;
+    private final  IContratService contratService;
 
     @PostMapping
     public Contrat ajouter(@RequestBody Contrat contrat) {

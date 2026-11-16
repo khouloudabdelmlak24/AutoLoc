@@ -21,6 +21,7 @@ public class Equipement {
     private Long idEquipement;
 
     private String libelle;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "equipements", fetch = FetchType.LAZY)
     private List<Vehicule> vehicules = new ArrayList<>();

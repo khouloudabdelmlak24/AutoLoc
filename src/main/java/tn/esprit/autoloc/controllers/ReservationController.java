@@ -1,6 +1,5 @@
 package tn.esprit.autoloc.controllers;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.entities.Reservation;
 import tn.esprit.autoloc.services.IReservationService;
@@ -9,10 +8,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reservations")
+@AllArgsConstructor
 public class ReservationController {
 
-    @Autowired
-    private IReservationService reservationService;
+    private final  IReservationService reservationService;
 
     @PostMapping
     public Reservation ajouter(@RequestBody Reservation reservation) {
