@@ -1,6 +1,8 @@
 package tn.esprit.autoloc.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.autoloc.entities.Agence;
@@ -8,10 +10,16 @@ import tn.esprit.autoloc.entities.Vehicule;
 import tn.esprit.autoloc.repositories.AgenceRepository;
 import tn.esprit.autoloc.repositories.VehiculeRepository;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Service
 public class AgenceServiceImpl implements IAgenceService {
+
+    private static final DateTimeFormatter FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
     @Autowired
     private AgenceRepository agenceRepository;
@@ -57,5 +65,13 @@ public class AgenceServiceImpl implements IAgenceService {
         }
 
         return agenceSauvegardee;
+    }
+
+    // Question 2 : 2 minutes après la FIN de chaque exécution
+    @Scheduled(fixedDelay = 2, timeUnit = TimeUnit.MINUTES)
+    public void suivreNombreAgences() {
+        List<Agence> agences = agenceRepository.findAll();
+        log.info("Suivi des agences : {} agence(s) enregistrée(s)", agences.size());
+        log.info("Date et heure de la vérification : {}", LocalDateTime.now().format(FORMAT));
     }
 }

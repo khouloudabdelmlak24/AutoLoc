@@ -51,7 +51,6 @@ public class EmployeServiceImpl implements IEmployeService {
         if (employe == null) {
             throw new RuntimeException("Employé introuvable : " + idEmploye);
         }
-
         Agence ancienneAgence = employe.getAgence();
         if (ancienneAgence != null) {
             ancienneAgence.getEmployes().remove(employe);   // côté inverse
@@ -60,7 +59,6 @@ public class EmployeServiceImpl implements IEmployeService {
 
         return employeRepository.save(employe);
     }
-
     @Override
     @Transactional
     public Employe affecterEmploye(Long idEmploye, Long idAgence) {
@@ -79,7 +77,6 @@ public class EmployeServiceImpl implements IEmployeService {
         }
         employe.setAgence(agence);                          // côté propriétaire
         agence.getEmployes().add(employe);                  // côté inverse
-
         return employeRepository.save(employe);
     }
 }
